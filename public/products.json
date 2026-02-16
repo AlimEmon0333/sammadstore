@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "name": "Premium Roasted Chana 10 No",
+    "pricePerKg": 1200,
+    "halfKgPrice": 600,
+    "discount": 10,
+    "image": "https://www.bombaydryfruits.com/images/product_gallery/313.webp",
+    "description": "Healthy, crunchy & full of protein!"
+  },
+  {
+    "id": 2,
+    "name": "Premium Roasted Chana 9 No",
+    "pricePerKg": 900,
+    "halfKgPrice": 450,
+    "discount": 10,
+    "image": "https://www.bombaydryfruits.com/images/product_gallery/313.webp",
+    "description": "Lightly roasted and perfectly seasoned."
+  },
+  {
+    "id": 3,
+    "name": "Premium Roasted Chana 8½ No",
+    "pricePerKg": 800,
+    "halfKgPrice": 400,
+    "discount": 10,
+    "image": "https://www.bombaydryfruits.com/images/product_gallery/313.webp",
+    "description": "Crispy texture with balanced flavor."
+  },
+  {
+    "id": 4,
+    "name": "Premium Roasted Chana 8 No",
+    "pricePerKg": 700,
+    "halfKgPrice": 350,
+    "discount": 10,
+    "image": "https://www.bombaydryfruits.com/images/product_gallery/313.webp",
+    "description": "Classic taste, full of protein and energy."
+  }
+]
+
