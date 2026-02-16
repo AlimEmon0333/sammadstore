@@ -99,7 +99,7 @@ function Home() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-            New Arrivals agro
+            New Arrivals
           </h2>
           <p className="text-gray-600 text-base max-w-2xl mx-auto">
             Discover our premium selection of roasted chana, each variety carefully selected and roasted to perfection.
