@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useInView, useSpring } from 'framer-motion'
 import Banner from '../components/Banner'
 import ProductCard from '../components/ProductCard'
+import trustestImg from '../../public/images/trusted.jpeg'
 
 // Animated Counter Component
 function AnimatedCounter({ end, duration = 2, suffix = "" }) {
@@ -122,7 +123,7 @@ function Home() {
       {/* Trust & Quality Section */}
       <section className="bg-gradient-to-br from-gray-50 to-amber-50 py-20">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-14 items-center">
             {/* Left Image */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -130,9 +131,9 @@ function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="bg-white rounded-2xl shadow-xl p-8">
+              <div className="bg-white rounded-2xl shadow-xl p-10">
                 <img
-                  src="https://www.bombaydryfruits.com/images/product_gallery/313.webp"
+                  src={trustestImg}
                   alt="Premium Packaging"
                   className="w-full rounded-lg"
                 />
@@ -148,13 +149,13 @@ function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Trusted Quality. <br />
                 Sealed Freshness. <br />
-                <span className="text-amber-600">Only at Agro Same.</span>
+                <span className="text-amber-600">Only at SamadStore.</span>
               </h2>
               <p className="text-gray-600 text-lg mb-6">
                 A new revolution. A new perspective.
               </p>
               <p className="text-xl font-semibold text-gray-800 mb-8">
-                Premium Roasted Chana by Agro Same – Health Everyday.
+                Premium Roasted Chana by SamadStore – Health Everyday.
               </p>
 
               <div className="space-y-4">
@@ -333,7 +334,7 @@ function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Why Choose <span className="text-amber-600">Agro Same?</span>
+              Why Choose <span className="text-amber-600">SamadStore?</span>
             </h2>
           </motion.div>
 

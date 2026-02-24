@@ -27,7 +27,7 @@ function ProductCard({ product }) {
         className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100"
       >
         {/* Image Container */}
-        <div className="relative h-44 overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50">
+        <div className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50">
           <motion.img
             whileHover={{ scale: 1.1, rotate: 2 }}
             transition={{ duration: 0.4 }}

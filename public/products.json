@@ -5,7 +5,7 @@
     "pricePerKg": 1200,
     "halfKgPrice": 600,
     "discount": 10,
-    "image": "https://www.bombaydryfruits.com/images/product_gallery/313.webp",
+    "image": "../images/product.jpeg",
     "description": "Healthy, crunchy & full of protein!"
   },
   {
@@ -14,7 +14,7 @@
     "pricePerKg": 900,
     "halfKgPrice": 450,
     "discount": 10,
-    "image": "https://www.bombaydryfruits.com/images/product_gallery/313.webp",
+    "image": "../images/product.jpeg",
     "description": "Lightly roasted and perfectly seasoned."
   },
   {
@@ -23,7 +23,7 @@
     "pricePerKg": 800,
     "halfKgPrice": 400,
     "discount": 10,
-    "image": "https://www.bombaydryfruits.com/images/product_gallery/313.webp",
+    "image": "../images/product.jpeg",
     "description": "Crispy texture with balanced flavor."
   },
   {
@@ -32,7 +32,7 @@
     "pricePerKg": 700,
     "halfKgPrice": 350,
     "discount": 10,
-    "image": "https://www.bombaydryfruits.com/images/product_gallery/313.webp",
+    "image": "../images/product.jpeg",
     "description": "Classic taste, full of protein and energy."
   }
 ]

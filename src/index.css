@@ -5,11 +5,22 @@
 @layer base {
   body {
     @apply bg-gray-50 text-gray-900;
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-family:
+      "Roboto",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Helvetica Neue",
+      Arial,
+      sans-serif;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', 'Roboto', 'Helvetica', Arial, sans-serif;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Inter", "Roboto", "Helvetica", Arial, sans-serif;
   }
 }
 
@@ -17,9 +28,8 @@
   .btn-primary {
     @apply bg-amber-500 hover:bg-amber-600 text-white font-medium py-2.5 px-6 rounded-md transition-all duration-200 shadow-sm hover:shadow;
   }
-  
+
   .btn-secondary {
     @apply bg-gray-700 hover:bg-gray-800 text-white font-medium py-2 px-4 rounded-md transition-all duration-200;
   }
 }
-

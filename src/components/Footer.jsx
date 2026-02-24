@@ -6,12 +6,12 @@ function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4 text-amber-400">Agro Same</h3>
+            <h3 className="text-xl font-bold mb-4 text-amber-400">SamadStore</h3>
             <p className="text-sm text-gray-300">
               Premium Roasted Chana with premium packaging – tasty, crunchy & 100% natural.
             </p>
             <p className="text-sm font-semibold text-amber-400 mt-2">
-              Agro Same – Health Everyday. One Bite at a Time.
+              SamadStore – Health Everyday. One Bite at a Time.
             </p>
           </div>
           
@@ -58,7 +58,7 @@ function Footer() {
           transition={{ delay: 0.5 }}
           className="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400"
         >
-          <p>&copy; {new Date().getFullYear()} Agro Same. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} SamadStore. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>
