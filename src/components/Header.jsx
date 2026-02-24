@@ -29,7 +29,7 @@ function Header() {
   return (
     <>
       {/* Top Announcement Bar with Animation */}
-      <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white text-center py-3 overflow-hidden relative">
+      <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white text-center py-1.5 md:py-3 overflow-hidden relative">
         <div className="absolute inset-0 bg-black/10"></div>
         <AnimatePresence mode="wait">
           <motion.div
@@ -38,7 +38,7 @@ function Header() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative z-10 font-semibold text-xs md:text-base flex items-center justify-center gap-2"
+            className="relative z-10 font-semibold text-[10px] md:text-base flex items-center justify-center gap-2"
           >
             <motion.span
               animate={{ scale: [1, 1.2, 1] }}
