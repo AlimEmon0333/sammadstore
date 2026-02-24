@@ -30,11 +30,11 @@ function Banner() {
         initial={{ scale: 1.05, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 2, ease: "easeOut" }}
-        className="absolute inset-0 z-0 bg-no-repeat bg-cover md:bg-cover bg-contain"
+        className="absolute inset-0 z-0 bg-contain md:bg-cover bg-no-repeat bg-center"
         style={{
           backgroundImage: `url(${bannerImg})`,
           backgroundPosition: "center center",
-          filter: "brightness(0.90) contrast(1.1) saturate(1.05)",
+          filter: "brightness(0.85) contrast(1.2) saturate(1.1)",
         }}
       />
 
