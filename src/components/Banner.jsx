@@ -137,7 +137,7 @@ function Banner() {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-xl hover:shadow-2xl transition-all border-2 border-white/20 text-base md:text-lg"
               >
-                <span>Learn More</span>
+                <span>Learn More .</span>
               </motion.a>
             </div>
 
