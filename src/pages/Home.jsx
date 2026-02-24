@@ -88,7 +88,7 @@ function Home() {
   ]
 
   return (
-    <div>
+    <div className='overflow-x-hidden'>
       <Banner />
       
       {/* Products Section */}
