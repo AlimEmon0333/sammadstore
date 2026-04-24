@@ -62,7 +62,7 @@ function Checkout() {
     message += `🧮 *Grand Total:* Rs ${grandTotal.toFixed(0)}\n\n`
     message += `Thank you for your order! 🙏`
 
-    const whatsappUrl = `https://wa.me/923128796934?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/923072608734?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
 
     setTimeout(() => {
@@ -233,7 +233,7 @@ function Checkout() {
                   onChange={() => setPaymentMethod('digital')}
                   className="accent-chana-gold shrink-0"
                 />
-                JazzCash / EasyPaisa / SadaPay
+                SadaPay
               </label>
 
               {paymentMethod === 'digital' && (
@@ -244,9 +244,9 @@ function Checkout() {
                 >
                   <p className="text-sm font-semibold text-chana-brown">Payment details</p>
                   <ul className="mt-2 space-y-1.5 text-sm text-gray-700 list-none">
-                    <li>JazzCash: 03XX-XXXXXXX</li>
-                    <li>EasyPaisa: 03XX-XXXXXXX</li>
-                    <li>SadaPay: yourname@sadapay</li>
+                    <li>SadaPay: 03128796934 
+                      Abdul Samad
+                    </li>
                   </ul>
                   <p className="text-red-600 text-sm font-semibold mt-3">
                     Send screenshot after payment on WhatsApp

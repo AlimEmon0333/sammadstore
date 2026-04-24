@@ -21,7 +21,7 @@ const faqs = [
   {
     question: "What payment methods do you accept?",
     answer:
-      "We accept advance payments via Easypaisa, JazzCash, and bank transfer. After payment, send the screenshot on WhatsApp for confirmation.",
+      "We accept advance payments via sadapay. After payment, send the screenshot on WhatsApp for confirmation.",
   },
   {
     question: "Can I order in bulk?",
