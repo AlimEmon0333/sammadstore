@@ -74,7 +74,7 @@ function Home() {
     {
       name: "Ahmed Ali",
       location: "Clifton, Karachi",
-      text: "Amazing quality! The packaging keeps it fresh and the taste is incredible. Delivery was super fast too!",
+      text: "Amazing quality! The packaging keeps it fresh and the taste is incredible. Delivery was super fast as well!",
       rating: 5,
       avatar: "👨"
     },
@@ -147,36 +147,35 @@ function Home() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Trusted Quality. <br />
                 Sealed Freshness. <br />
-                <span className="text-amber-600">Only at Samadstore.</span>
+                <span className="text-amber-600">Only at Samad Store.</span>
               </h2>
               <p className="text-gray-600 text-lg mb-6">
-                A new revolution. A new perspective.
+               A new standard in healthy snacking.
               </p>
               <p className="text-xl font-semibold text-gray-800 mb-8">
-                Premium Roasted Chana by Samadstore – Health Everyday.
+                Premium Roasted Chana by Samad Store — carefully prepared to deliver the perfect balance of taste, freshness, and nutrition.
               </p>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="text-2xl">✓</div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Premium Quality</h4>
+                    <h4 className="font-semibold text-gray-900">Premium quality with secure packaging</h4>
                     <p className="text-gray-600 text-sm">100% pure quality – preserved in our premium packaging</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="text-2xl">✓</div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Sealed Freshness</h4>
+                    <h4 className="font-semibold text-gray-900">Sealed freshness for better taste and shelf life</h4>
                     <p className="text-gray-600 text-sm">Air-tight packaging ensures freshness and crunchiness</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="text-2xl">✓</div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Natural Energy Snack</h4>
+                    <h4 className="font-semibold text-gray-900">Natural and healthy snack option</h4>
                     <p className="text-gray-600 text-sm">Packed with fiber & protein for a healthy lifestyle</p>
                   </div>
                 </div>
@@ -191,9 +190,9 @@ function Home() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {[
-              { icon: "🥜", title: "Premium Quality", desc: "Handpicked and carefully roasted for the best taste", delay: 0.1, color: "from-amber-500 to-orange-500" },
-              { icon: "🚚", title: "Fast Delivery in Karachi", desc: "Free delivery on orders above Rs 2000 in Karachi", delay: 0.2, color: "from-blue-500 to-cyan-500" },
-              { icon: "💯", title: "100% Fresh", desc: "Always fresh from our roasting facility", delay: 0.3, color: "from-green-500 to-emerald-500" }
+              { icon: "🥜", title: "Premium Quality", desc: "Carefully selected and processed for the best taste.", delay: 0.1, color: "from-amber-500 to-orange-500" },
+              { icon: "🚚", title: "Fast & Reliable Delivery in Karachi", desc: "Quick delivery across Karachi within 1–3 days.", delay: 0.2, color: "from-blue-500 to-cyan-500" },
+              { icon: "💯", title: "Prepared Fresh Daily", desc: "Always fresh for maximum taste and crunch.", delay: 0.3, color: "from-green-500 to-emerald-500" }
             ].map((feature, idx) => (
               <motion.div
                 key={idx}
@@ -334,14 +333,14 @@ function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Why Choose <span className="text-amber-600">Samadstore?</span>
+              Why Choose <span className="text-amber-600">Samad Store?</span>
             </h2>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { icon: "🌾", title: "100% Natural", desc: "No artificial colors or preservatives" },
-              { icon: "🔥", title: "Freshly Roasted", desc: "Roasted daily in small batches" },
+              { icon: "🔥", title: "Fresh & Hygienic", desc: "Prepared and packed with care" },
               { icon: "📦", title: "Premium Packaging", desc: "Air-tight seal to lock freshness" },
               { icon: "🚀", title: "Fast Delivery in Karachi", desc: "Delivered within 2-3 days in Karachi" },
               { icon: "💵", title: "Cash on Delivery", desc: "Pay when you receive your order" },

@@ -100,7 +100,7 @@ function Banner() {
                 transition={{ delay: 0.5 }}
                 className="block"
               >
-                of <span className="text-orange-500">Health.</span>
+                of <span className="text-orange-500">Healthy Snacking</span>
               </motion.span>
             </h1>
 
@@ -110,11 +110,10 @@ function Banner() {
               transition={{ delay: 0.6 }}
               className="text-gray-100 text-base md:text-xl mb-8 md:mb-10 leading-relaxed max-w-xl font-medium drop-shadow-md font-sans"
             >
-              Premium Roasted Chana with premium packaging – tasty, crunchy &
-              100% natural.
+              Premium Roasted Chana with high-quality packaging — tasty, crunchy & 100% natural
               <br className="hidden md:block" />
               <span className="font-bold text-amber-400">
-                Samadstore – Health Everyday. 🌾
+                Samadstore – Healthy for everyday snacking. 🌾
               </span>
             </motion.p>
 
@@ -166,7 +165,7 @@ function Banner() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-amber-400 text-lg">✓</span>
-                <span>Fresh Daily</span>
+                <span>Freshly prepared</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-amber-400 text-lg">✓</span>
