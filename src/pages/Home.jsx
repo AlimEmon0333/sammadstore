@@ -112,7 +112,7 @@ function Home() {
             <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-amber-500"></div>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -149,13 +149,13 @@ function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Trusted Quality. <br />
                 Sealed Freshness. <br />
-                <span className="text-amber-600">Only at SamadStore.</span>
+                <span className="text-amber-600">Only at Samadstore.</span>
               </h2>
               <p className="text-gray-600 text-lg mb-6">
                 A new revolution. A new perspective.
               </p>
               <p className="text-xl font-semibold text-gray-800 mb-8">
-                Premium Roasted Chana by SamadStore – Health Everyday.
+                Premium Roasted Chana by Samadstore – Health Everyday.
               </p>
 
               <div className="space-y-4">
@@ -334,7 +334,7 @@ function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Why Choose <span className="text-amber-600">SamadStore?</span>
+              Why Choose <span className="text-amber-600">Samadstore?</span>
             </h2>
           </motion.div>
 

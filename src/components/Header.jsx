@@ -102,7 +102,15 @@ function Header() {
                   Contact
                 </motion.span>
               </Link>
-              <Link to="/checkout">
+               <Link to="/faqs">
+                <motion.span
+                  whileHover={{ scale: 1.1 }}
+                  className="text-sm md:text-base font-medium text-gray-700 hover:text-amber-600 transition-colors"
+                >
+                  FAQs
+                </motion.span>
+              </Link>
+              <Link to="/cart">
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}

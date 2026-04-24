@@ -74,7 +74,7 @@ function Banner() {
               transition={{ delay: 0.2 }}
               className="inline-block text-amber-400 font-bold text-xs md:text-sm uppercase tracking-widest mb-4 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full border border-amber-500/30"
             >
-              ✨ HEALTHY SNACKING STARTS WITH SamadStore
+              ✨ HEALTHY SNACKING STARTS WITH Samadstore
             </motion.span>
 
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl font-sans">
@@ -114,7 +114,7 @@ function Banner() {
               100% natural.
               <br className="hidden md:block" />
               <span className="font-bold text-amber-400">
-                SamadStore – Health Everyday. 🌾
+                Samadstore – Health Everyday. 🌾
               </span>
             </motion.p>
 
@@ -131,7 +131,7 @@ function Banner() {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 hover:from-amber-600 hover:via-orange-600 hover:to-red-600 text-white font-bold px-8 md:px-10 py-3 md:py-4 rounded-full shadow-2xl text-base md:text-lg transition-all"
               >
-                <span>Shop Now</span>
+                <span>Order Now</span>
                 <motion.span
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
