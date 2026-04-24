@@ -43,7 +43,7 @@ function Checkout() {
     message += `💳 *Payment Method:* ${
       paymentMethod === 'cod'
         ? 'Cash on Delivery (COD)'
-        : 'Online Payment (JazzCash / EasyPaisa / SadaPay)'
+        : 'Online Payment (SadaPay)'
     }\n\n`
     message += `🛍️ *Products:*\n`
 
@@ -233,7 +233,7 @@ function Checkout() {
                   onChange={() => setPaymentMethod('digital')}
                   className="accent-chana-gold shrink-0"
                 />
-                SadaPay
+                Bank transfer
               </label>
 
               {paymentMethod === 'digital' && (
