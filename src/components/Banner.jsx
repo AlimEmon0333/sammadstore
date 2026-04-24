@@ -74,7 +74,7 @@ function Banner() {
               transition={{ delay: 0.2 }}
               className="inline-block text-amber-400 font-bold text-xs md:text-sm uppercase tracking-widest mb-4 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full border border-amber-500/30"
             >
-              ✨ HEALTHY SNACKING STARTS WITH Samadstore
+              ✨ HEALTHY SNACKING STARTS WITH Samad Store
             </motion.span>
 
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl font-sans">
@@ -113,7 +113,7 @@ function Banner() {
               Premium Roasted Chana with high-quality packaging — tasty, crunchy & 100% natural
               <br className="hidden md:block" />
               <span className="font-bold text-amber-400">
-                Samadstore – Healthy for everyday snacking. 🌾
+                Samad Store – Healthy for everyday snacking. 🌾
               </span>
             </motion.p>
 
@@ -139,17 +139,7 @@ function Banner() {
                 </motion.span>
               </motion.a>
 
-              <motion.a
-                href="#products"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md text-white font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-xl hover:shadow-2xl transition-all border-2 border-white/20 text-base md:text-lg"
-              >
-                <span>Learn More</span>
-              </motion.a>
+              
             </div>
 
             {/* Trust Badges */}

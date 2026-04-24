@@ -110,7 +110,7 @@ function Header() {
                   FAQs
                 </motion.span>
               </Link>
-              <Link to="/cart">
+              <Link to="/checkout">
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
