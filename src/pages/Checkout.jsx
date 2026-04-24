@@ -2,11 +2,17 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useCart } from '../context/CartContext'
+import CheckoutSteps from '../components/CheckoutSteps'
 
 function Checkout() {
   const navigate = useNavigate()
-  const { cart, updateQuantity, removeFromCart, getCartTotal } = useCart()
-  
+  const { cart, getCartTotal } = useCart()
+
+  const [loading, setLoading] = useState(false)
+
+  // ✅ NEW: payment method state
+  const [paymentMethod, setPaymentMethod] = useState('cod')
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -26,249 +32,240 @@ function Checkout() {
 
   const handlePlaceOrder = (e) => {
     e.preventDefault()
-    
+
     if (cart.length === 0) {
       alert('Your cart is empty!')
       return
     }
 
-    // Create WhatsApp message
-    let message = `🧾 *New Order Received!*\n\n`
+    setLoading(true)
+
+    let message = `🧾 *New Order Received*\n\n`
+
     message += `👤 Name: ${formData.name}\n`
     message += `📞 Phone: ${formData.phone}\n`
     message += `📍 City: ${formData.city}\n`
     message += `🏠 Address: ${formData.address}\n`
     message += `✉️ Email: ${formData.email || 'Not provided'}\n\n`
-    message += `🛍️ *Products:*\n`
-    
-    cart.forEach((item, index) => {
-      const itemTotal = item.price * item.quantity
-      const itemDiscount = itemTotal * 0.1
-      const itemFinal = itemTotal - itemDiscount
-      message += `${index + 1}. ${item.name} (${item.weightType})\n`
-      message += `   Qty: ${item.quantity} × Rs ${item.price} = Rs ${itemTotal}\n`
-      message += `   After 10% off: Rs ${itemFinal.toFixed(0)}\n\n`
-    })
-    
-    message += `💸 *Subtotal:* Rs ${subtotal}\n`
-    message += `🎁 *Discount (10%):* -Rs ${discount.toFixed(0)}\n`
-    message += `🚚 *Delivery:* Rs ${delivery}\n`
-    message += `🧮 *Grand Total:* Rs ${grandTotal.toFixed(0)}\n\n`
-    message += `Thank you for your order! 🙏`
 
-    // Open WhatsApp
+    // ✅ PAYMENT METHOD ADDED
+    message += `💳 *Payment Method:* ${
+      paymentMethod === 'cod'
+        ? 'Cash on Delivery (COD)'
+        : 'Online Payment (JazzCash / EasyPaisa / SadaPay)'
+    }\n\n`
+
+    message += `🛍️ *Products:*\n`
+
+    cart.forEach((item, i) => {
+      message += `${i + 1}. ${item.name} (${item.weightType}) x ${item.quantity}\n`
+    })
+
+    message += `\n💰 *Subtotal:* Rs ${subtotal}`
+    message += `\n🎁 *Discount:* -Rs ${discount.toFixed(0)}`
+    message += `\n🚚 *Delivery:* Rs ${delivery}`
+    message += `\n🧮 *Total:* Rs ${grandTotal.toFixed(0)}`
+
     const whatsappUrl = `https://wa.me/923128796934?text=${encodeURIComponent(message)}`
-    window.open(whatsappUrl, '_blank')
-    
-    // Navigate to thank you page
+
     setTimeout(() => {
+      window.open(whatsappUrl, '_blank')
       navigate('/thankyou')
-    }, 500)
+    }, 1000)
   }
 
   if (cart.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-16 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <div className="text-6xl mb-4">🛒</div>
-          <h2 className="text-3xl font-bold text-chana-brown mb-4">Your Cart is Empty</h2>
-          <p className="text-gray-600 mb-8">Add some delicious roasted chana to get started!</p>
-          <motion.a
-            href="/"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-primary inline-block"
-          >
-            Continue Shopping
-          </motion.a>
-        </motion.div>
+      <div className="text-center py-20">
+        <h2 className="text-2xl font-bold">Your cart is empty</h2>
+        <button onClick={() => navigate('/')} className="btn-primary mt-4">
+          Continue Shopping
+        </button>
       </div>
     )
   }
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 py-10">
+
+      {/* STEP INDICATOR */}
+      <CheckoutSteps />
+
       <motion.h1
-        initial={{ opacity: 0, y: -30 }}
+        className="text-4xl font-bold text-center mb-10 text-gray-800"
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-4xl font-display font-bold text-chana-brown mb-8 text-center"
       >
         Checkout
       </motion.h1>
 
       <div className="grid lg:grid-cols-2 gap-8">
-        {/* Cart Items */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-        >
-          <div className="card p-6">
-            <h2 className="text-2xl font-display font-bold mb-6 text-chana-brown">Your Cart</h2>
-            
-            <div className="space-y-4">
-              {cart.map((item) => {
-                const itemTotal = item.price * item.quantity
-                const itemDiscount = itemTotal * 0.1
-                const itemFinal = itemTotal - itemDiscount
-                
-                return (
-                  <div key={`${item.id}-${item.weightType}`} className="flex gap-4 border-b pb-4">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-20 h-20 object-cover rounded-lg"
-                      onError={(e) => {
-                        e.target.src = 'https://www.bombaydryfruits.com/images/product_gallery/313.webp'
-                      }}
-                    />
-                    
-                    <div className="flex-grow">
-                      <h3 className="font-bold text-chana-brown">{item.name}</h3>
-                      <p className="text-sm text-gray-600">{item.weightType}</p>
-                      <p className="text-sm font-semibold text-green-600">
-                        Rs {itemFinal.toFixed(0)} <span className="text-gray-400 line-through">Rs {itemTotal}</span>
-                      </p>
-                      
-                      <div className="flex items-center gap-2 mt-2">
-                        <button
-                          onClick={() => updateQuantity(item.id, item.weightType, item.quantity - 1)}
-                          className="bg-gray-200 hover:bg-gray-300 w-8 h-8 rounded-full font-bold"
-                        >
-                          -
-                        </button>
-                        <span className="font-semibold w-8 text-center">{item.quantity}</span>
-                        <button
-                          onClick={() => updateQuantity(item.id, item.weightType, item.quantity + 1)}
-                          className="bg-chana-gold hover:bg-yellow-600 text-white w-8 h-8 rounded-full font-bold"
-                        >
-                          +
-                        </button>
-                        <button
-                          onClick={() => removeFromCart(item.id, item.weightType)}
-                          className="ml-auto text-red-500 hover:text-red-700 text-sm"
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
 
-            <div className="mt-6 space-y-2 text-lg">
-              <div className="flex justify-between">
-                <span>Subtotal:</span>
-                <span className="font-semibold">Rs {subtotal}</span>
+        {/* LEFT - CUSTOMER DETAILS */}
+        <div className="bg-white rounded-xl shadow-md p-6">
+
+          <h2 className="text-2xl font-bold mb-6">👤 Customer Details</h2>
+
+          <form onSubmit={handlePlaceOrder} className="space-y-4">
+
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Full Name *"
+              required
+              className="w-full px-4 py-3 border rounded-lg"
+            />
+
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Phone Number *"
+              required
+              className="w-full px-4 py-3 border rounded-lg"
+            />
+
+            <select
+              name="city"
+              value={formData.city}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border rounded-lg"
+            >
+              <option value="Karachi">Karachi</option>
+            </select>
+
+            <textarea
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              placeholder="Delivery Address *"
+              required
+              rows="3"
+              className="w-full px-4 py-3 border rounded-lg"
+            />
+
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email (optional)"
+              className="w-full px-4 py-3 border rounded-lg"
+            />
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold text-lg transition"
+            >
+              {loading ? 'Placing Order...' : 'Place Order via WhatsApp'}
+            </button>
+
+          </form>
+        </div>
+
+        {/* RIGHT - ORDER SUMMARY */}
+        <div className="bg-white rounded-xl shadow-md p-6">
+
+          <h2 className="text-2xl font-bold mb-6">🛍️ Order Summary</h2>
+
+          {/* PRODUCTS */}
+          <div className="space-y-3 max-h-60 overflow-y-auto pr-2">
+
+            {cart.map((item, i) => (
+              <div key={i} className="flex justify-between border-b pb-2">
+                <div>
+                  <p className="font-semibold">{item.name}</p>
+                  <p className="text-sm text-gray-500">
+                    Qty: {item.quantity} × Rs {item.price}
+                  </p>
+                </div>
+
+                <div className="font-semibold">
+                  Rs {item.price * item.quantity}
+                </div>
               </div>
-              <div className="flex justify-between text-green-600">
-                <span>Discount (10%):</span>
-                <span className="font-semibold">-Rs {discount.toFixed(0)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Delivery Charges:</span>
-                <span className="font-semibold">Rs {delivery}</span>
-              </div>
-              <div className="flex justify-between text-2xl font-bold text-chana-brown border-t pt-2">
-                <span>Grand Total:</span>
-                <span>Rs {grandTotal.toFixed(0)}</span>
-              </div>
-            </div>
+            ))}
+
           </div>
-        </motion.div>
 
-        {/* Customer Form */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-        >
-          <div className="card p-6">
-            <h2 className="text-2xl font-display font-bold mb-6 text-chana-brown">Customer Details</h2>
-            
-            <form onSubmit={handlePlaceOrder} className="space-y-4">
-              <div>
-                <label className="block text-sm font-semibold mb-2">Name *</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-chana-gold"
-                  placeholder="Enter your full name"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-semibold mb-2">Phone *</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-chana-gold"
-                  placeholder="Enter your phone number"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-semibold mb-2">City *</label>
-                <select
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-chana-gold bg-white"
-                >
-                  <option value="Karachi">📍 Karachi</option>
-                </select>
-                <p className="text-xs text-gray-500 mt-1">Currently serving Karachi only</p>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-semibold mb-2">Address *</label>
-                <textarea
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  required
-                  rows="3"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-chana-gold"
-                  placeholder="Enter your complete address"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-semibold mb-2">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-chana-gold"
-                  placeholder="Enter your email (optional)"
-                />
-              </div>
+          {/* 💳 PAYMENT METHOD (NEW) */}
+          <div className="mt-6 border-t pt-4">
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="btn-primary w-full text-lg py-3"
+            <h3 className="text-lg font-bold mb-3">💳 Payment Method</h3>
+
+            <label className="flex items-center gap-2 mb-2 cursor-pointer">
+              <input
+                type="radio"
+                checked={paymentMethod === 'cod'}
+                onChange={() => setPaymentMethod('cod')}
+              />
+              Cash on Delivery (COD)
+            </label>
+
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="radio"
+                checked={paymentMethod === 'digital'}
+                onChange={() => setPaymentMethod('digital')}
+              />
+              JazzCash / EasyPaisa / SadaPay
+            </label>
+
+            {paymentMethod === 'digital' && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                className="mt-3 p-3 bg-gray-100 rounded-lg text-sm"
               >
-                Place Order via WhatsApp
-              </motion.button>
-            </form>
+                <p className="font-semibold">📌 Payment Details:</p>
+                <p>📱 JazzCash: 03XX-XXXXXXX</p>
+                <p>📱 EasyPaisa: 03XX-XXXXXXX</p>
+                <p>📱 SadaPay: yourname@sadapay</p>
+
+                <p className="text-red-500 font-semibold mt-2">
+                  ⚠️ Send screenshot after payment on WhatsApp
+                </p>
+              </motion.div>
+            )}
+
           </div>
-        </motion.div>
+
+          {/* TOTALS */}
+          <div className="mt-6 space-y-2">
+
+            <div className="flex justify-between">
+              <span>Subtotal</span>
+              <span>Rs {subtotal}</span>
+            </div>
+
+            <div className="flex justify-between text-green-600">
+              <span>Discount (10%)</span>
+              <span>- Rs {discount.toFixed(0)}</span>
+            </div>
+
+            <div className="flex justify-between">
+              <span>Delivery</span>
+              <span>Rs {delivery}</span>
+            </div>
+
+            <hr className="my-2" />
+
+            <div className="flex justify-between text-xl font-bold">
+              <span>Total</span>
+              <span>Rs {grandTotal.toFixed(0)}</span>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
     </div>
   )
 }
 
 export default Checkout
-
