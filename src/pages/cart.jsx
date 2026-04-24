@@ -8,7 +8,7 @@ function Cart() {
 
   const subtotal = getCartTotal()
   const discount = subtotal * 0.1
-  const delivery = 150
+  const delivery = subtotal >= 2000 ? 0 : 150
   const grandTotal = subtotal - discount + delivery
 
   if (cart.length === 0) {
@@ -175,7 +175,13 @@ function Cart() {
 
             <div className="flex justify-between">
               <span>Delivery</span>
-              <span>Rs {delivery}</span>
+              <span className="font-semibold">
+                {delivery === 0 ? (
+                  <span className="text-green-600">Free</span>
+                ) : (
+                  <>Rs {delivery}</>
+                )}
+              </span>
             </div>
 
             <hr />
