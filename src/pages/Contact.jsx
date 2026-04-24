@@ -42,10 +42,10 @@ function Contact() {
                   />
                 </div>
                 <h2 className="text-2xl md:text-3xl font-display font-bold text-gray-900 mb-4">
-                  About Samadstore
+                  About Samad Store
                 </h2>
                 <p className="text-lg leading-relaxed mb-6 font-light">
-                  Samadstore brings you pure, crunchy, and nutritious Roasted
+                  Samad Store brings you pure, crunchy, and nutritious Roasted
                   Chana, sealed in modern, air-tight premium packaging! This
                   500g pouch is not only delicious but also a perfect choice for
                   a healthy lifestyle.
@@ -54,7 +54,7 @@ function Contact() {
                   Each batch of our roasted chana is carefully selected,
                   processed, and packaged to ensure you receive only the best
                   quality products.{" "}
-                  <strong>Samadstore – Health Everyday.</strong>
+                  <strong>Samad Store – Health Everyday.</strong>
                 </p>
               </motion.div>
 
