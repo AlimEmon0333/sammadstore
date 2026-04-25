@@ -2,8 +2,8 @@
   {
     "id": 1,
     "name": "Premium Roasted Chana 10 No",
-    "pricePerKg": 1554,
-    "halfKgPrice": 777,
+    "pricePerKg": 1444,
+    "halfKgPrice": 722,
     "discount": 10,
     "image": "../images/product.jpeg",
     "description": "Healthy, crunchy & full of protein!"
@@ -11,8 +11,8 @@
   {
     "id": 2,
     "name": "Premium Roasted Chana 9 No",
-    "pricePerKg": 1332,
-    "halfKgPrice": 666,
+    "pricePerKg": 1333,
+    "halfKgPrice": 667,
     "discount": 10,
     "image": "../images/product.jpeg",
     "description": "Lightly roasted and perfectly seasoned."
@@ -20,7 +20,7 @@
   {
     "id": 3,
     "name": "Premium Roasted Chana 8½ No",
-    "pricePerKg": 1110,
+    "pricePerKg": 1111,
     "halfKgPrice": 555,
     "discount": 10,
     "image": "../images/product.jpeg",
