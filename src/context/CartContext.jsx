@@ -21,34 +21,48 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('chana-cart', JSON.stringify(cart))
   }, [cart])
+  
 
   const addToCart = (product, weightType) => {
-    const price = weightType === '1kg' ? product.pricePerKg : product.halfKgPrice
-    const weight = weightType === '1kg' ? 1 : 0.5
-    
-    const existingItem = cart.find(
-      item => item.id === product.id && item.weightType === weightType
-    )
+  const price =
+    weightType === '1kg' ? product.pricePerKg : product.halfKgPrice
 
-    if (existingItem) {
-      setCart(cart.map(item =>
-        item.id === product.id && item.weightType === weightType
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      ))
-    } else {
-      setCart([...cart, {
-        id: product.id,
-        name: product.name,
-        price,
-        weight,
-        weightType,
-        quantity: 1,
-        image: product.image,
-        discount: product.discount
-      }])
-    }
+  const weight = weightType === '1kg' ? 1 : 0.5
+
+  const existingItem = cart.find(
+    item => item.id === product.id && item.weightType === weightType
+  )
+
+  if (existingItem) {
+    setCart(cart.map(item =>
+      item.id === product.id && item.weightType === weightType
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    ))
+  } else {
+    setCart([...cart, {
+      id: product.id,
+      name: product.name,
+      price,
+      weight,
+      weightType,
+      quantity: 1,
+      image: product.image,
+      discount: product.discount
+    }])
   }
+
+  if (window.fbq) {
+    window.fbq('track', 'AddToCart', {
+      content_ids: [product.id],
+      content_name: product.name,
+      content_type: 'product',
+      value: price,
+      currency: 'PKR',
+      num_items: 1
+    })
+  }
+}
 
   const removeFromCart = (productId, weightType) => {
     setCart(cart.filter(item => !(item.id === productId && item.weightType === weightType)))
