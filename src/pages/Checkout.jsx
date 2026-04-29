@@ -26,50 +26,6 @@ function Checkout() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // const handlePlaceOrder = (e) => {
-  //   e.preventDefault()
-
-  //   if (cart.length === 0) {
-  //     alert('Your cart is empty!')
-  //     return
-  //   }
-
-  //   let message = `🧾 *New Order Received!*\n\n`
-  //   message += `👤 Name: ${formData.name}\n`
-  //   message += `📞 Phone: ${formData.phone}\n`
-  //   message += `📍 City: ${formData.city}\n`
-  //   message += `🏠 Address: ${formData.address}\n`
-  //   message += `✉️ Email: ${formData.email || 'Not provided'}\n\n`
-  //   message += `💳 *Payment Method:* ${
-  //     paymentMethod === 'cod'
-  //       ? 'Cash on Delivery (COD)'
-  //       : 'Online Payment (SadaPay)'
-  //   }\n\n`
-  //   message += `🛍️ *Products:*\n`
-
-  //   cart.forEach((item, index) => {
-  //     const itemTotal = item.price * item.quantity
-  //     const itemDiscount = itemTotal * 0.1
-  //     const itemFinal = itemTotal - itemDiscount
-  //     message += `${index + 1}. ${item.name} (${item.weightType})\n`
-  //     message += `   Qty: ${item.quantity} × Rs ${item.price} = Rs ${itemTotal}\n`
-  //     message += `   After 10% off: Rs ${itemFinal.toFixed(0)}\n\n`
-  //   })
-
-  //   message += `💸 *Subtotal:* Rs ${subtotal}\n`
-  //   message += `🎁 *Discount (10%):* -Rs ${discount.toFixed(0)}\n`
-  //   message += `🚚 *Delivery:* ${delivery === 0 ? 'Free (order Rs 2000+)' : `Rs ${delivery}`}\n`
-  //   message += `🧮 *Grand Total:* Rs ${grandTotal.toFixed(0)}\n\n`
-  //   message += `Thank you for your order! 🙏`
-
-  //   const whatsappUrl = `https://wa.me/923072608734?text=${encodeURIComponent(message)}`
-  //   window.open(whatsappUrl, '_blank')
-
-  //   setTimeout(() => {
-  //     navigate('/thankyou')
-  //   }, 500)
-  // }
-
   const handlePlaceOrder = (e) => {
     e.preventDefault();
 
@@ -106,13 +62,6 @@ function Checkout() {
       });
     }
 
-    if (window.fbq) {
-      window.fbq("track", "InitiateCheckout", {
-        value: subtotal,
-        currency: "PKR",
-      });
-    }
-
     let message = `🧾 *New Order Received!*\n\n`;
     message += `👤 Name: ${formData.name}\n`;
     message += `📞 Phone: ${formData.phone}\n`;
@@ -141,7 +90,6 @@ function Checkout() {
 
     window.open(whatsappUrl, "_blank");
 
-    
     setTimeout(() => {
       navigate("/thankyou");
     }, 500);
@@ -173,6 +121,9 @@ function Checkout() {
       </div>
     );
   }
+  useEffect(() => {
+    fbq("track", "InitiateCheckout");
+  }, []);
 
   return (
     <div className="container mx-auto px-4 py-16">
